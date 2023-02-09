@@ -5,53 +5,49 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: raalonso <raalonso@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/07 18:51:33 by raalonso          #+#    #+#             */
-/*   Updated: 2023/02/08 20:16:10 by raalonso         ###   ########.fr       */
+/*   Created: 2023/02/09 19:01:33 by raalonso          #+#    #+#             */
+/*   Updated: 2023/02/09 19:52:45 by raalonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include <unistd.h>
 
-void	printnb(char num1, char numm2, char num3);
+void	ft_putchar(char a, char b, char c)
+{
+	write(1, &a, 1);
+	write(1, &b, 1);
+	write(1, &c, 1);
+	if (a != '7' || b != '8' || c != '9')
+	{
+		write(1, ", ", 2);
+	}
+}
 
 void	ft_print_comb(void)
 {
-	char	num1;
-	char	num2;
-	char	num3;
+	char	d;
+	char	e;
+	char	f;
 
-	num1 = 48;
-	num2 = 49;
-	num3 = 50;
-	while (num1 < 58)
+	d = '0';
+	while (d <= '7')
 	{
-		while (num2 < 58)
+		e = d + 1;
+		while (e <= '8')
 		{
-			printnb(num1, num2, num3);
-			++num2;
-			num3 = (num2 + 1);
+			f = e + 1;
+			while (f <= '9')
+			{
+				ft_putchar(d, e, f);
+				f++;
+			}
+			e++;
 		}
-		++num1;
-		num2 = (num1 + 1);
-		num3 = (num2 + 1);
+		d++;
 	}
 }
 
-void	printnb(char num1, char num2, char num3)
-{
-	while (num3 < 58)
-	{
-		write(1, &num1, 1);
-		write(1, &num2, 1);
-		write(1, &num3, 1);
-		if (num1 == 55)
-			write(1, "", 1);
-		else
-			write(1, ", ", 2);
-		++num3;
-	}
-}
-
-/*int main(void)
+/*int	main(void)
 {
 	ft_print_comb();
 	return (0);
