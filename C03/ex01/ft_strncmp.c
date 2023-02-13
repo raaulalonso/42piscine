@@ -6,14 +6,14 @@
 /*   By: raalonso <raalonso@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 12:13:59 by raalonso          #+#    #+#             */
-/*   Updated: 2023/02/12 12:28:56 by raalonso         ###   ########.fr       */
+/*   Updated: 2023/02/13 20:32:02 by raalonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	int	cmp;
-	int	i;
+	unsigned int	cmp;
+	unsigned int	i;
 
 	cmp = 0;
 	i = 0;
