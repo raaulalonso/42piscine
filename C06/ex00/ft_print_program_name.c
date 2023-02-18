@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_print_program_name.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: raalonso <raalonso@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/12 20:41:03 by raalonso          #+#    #+#             */
-/*   Updated: 2023/02/15 21:01:04 by raalonso         ###   ########.fr       */
+/*   Created: 2023/02/16 09:28:26 by raalonso          #+#    #+#             */
+/*   Updated: 2023/02/16 14:05:03 by raalonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
 
-void	ft_putstr(char *str)
+int	main(int n, char **name)
 {
 	int	i;
 
 	i = 0;
-	while (str[i] != '\0')
+	if (n == 1)
 	{
-		write(1, &str[i], 1);
-		i++;
+		while (name[0][i] != '\0')
+		{
+			write(1, &name[0][i], 1);
+			i++;
+		}
+		write(1, "\n", 1);
 	}
+	return (0);
 }
