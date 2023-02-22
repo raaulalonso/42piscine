@@ -6,42 +6,53 @@
 /*   By: raalonso <raalonso@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:25:59 by raalonso          #+#    #+#             */
-/*   Updated: 2023/02/16 18:29:25 by raalonso         ###   ########.fr       */
+/*   Updated: 2023/02/22 21:47:22 by raalonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
-void	strswap(int n, char **argv)
-{
-	int j;
-	char	temp[1024];
 
-	j = 0;
-	while (argv[n][j] != '\0')
+int	ft_strcmp(char *s1, char *s2)
+{
+	int	cmp;
+	int	i;
+
+	cmp = 0;
+	i = 0;
+	while ((s1[i] != '\0') || (s2[i] != '\0'))
 	{
-		temp[j] = argv[n][j];
-		j++;
+		if (s1[i] != s2[i])
+		{
+			cmp = (s1[i] - s2[i]);
+			return (cmp);
+		}
+		i++;
 	}
-	temp[j] = '\0';
-	j = 0;
-	while (argv[n + 1][j] != '\0')
+	return (cmp);
+}
+
+void	axe(char **str1, char **str2, int i)
+{
+	char	*temp;
+
+	i = 0;
+	while ((str1[i] != '\0') && (str2[i] != '\0'))
 	{
-		argv[n][j] = argv[n][j];
-		j++;
+		if (ft_strcmp(*str1, *str2) > 0)
+		{
+			temp = *str1;
+			*str1 = *str2;
+			*str2 = temp;
+			i = 0;
+			break ;
+		}
+		i++;
 	}
-	argv[n][j] = '\0';
-	j = 0;
-	while (temp[j] != '\0')
-	{
-		argv[n + 1][j] = temp[j];
-	}
-	argv[n + 1][j] = '\0';
-	j = 0;
 }	
 
 void	putstrings(char **argv)
 {
-	int j;
-	int p;
+	int	j;
+	int	p;
 
 	p = 1;
 	j = 0;
@@ -58,7 +69,7 @@ void	putstrings(char **argv)
 	}
 }
 
-int	main(int argc, char **argv)
+int	main(int argc, char *argv[])
 {
 	int	n;
 	int	i;
@@ -66,23 +77,17 @@ int	main(int argc, char **argv)
 
 	if (argc > 1)
 	{
-		n = 1;
 		i = 0;
 		end = 0;
-		while (n < argc)
+		while (end < argc)
 		{
-			while (((argv[n][i] != '\0') || (argv[n + 1][i] != '\0')) && (argv[n] != '\0'))
+			n = 1;
+			while (argv[n + 1] != '\0')
 			{
-				if (argv[n][i] > argv[n + 1][i])
-				{
-					strswap(n, argv);
-					n++;
-					i = 0;
-				}
-				else 
-					i++;
+				axe(&argv[n], &argv[n + 1], i);
+				i = 0;
+				n++;
 			}
-			n = 0;
 			end++;
 		}
 	}

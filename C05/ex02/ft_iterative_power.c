@@ -1,36 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_params.c                                    :+:      :+:    :+:   */
+/*   ft_iterative_power.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: raalonso <raalonso@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/16 14:05:57 by raalonso          #+#    #+#             */
-/*   Updated: 2023/02/19 19:09:29 by raalonso         ###   ########.fr       */
+/*   Created: 2023/02/20 23:16:29 by raalonso          #+#    #+#             */
+/*   Updated: 2023/02/22 19:08:33 by raalonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
+#include <stdio.h>
 
-int	main(int argc, char **argv)
+int	ft_iterative_power(int nb, int power)
 {
 	int	i;
-	int	n;
+	int	aux;
 
-	if (argc > 1)
+	aux = nb;
+	i = 0;
+	if (power == 0)
+		return (1);
+	if (power < 0)
+		return (0);
+	while (i != (power - 1))
 	{
-		n = (argc - 1);
-		i = 0;
-		while (n != 0)
-		{
-			while (argv[n][i] != '\0')
-			{
-				write(1, &argv[n][i], 1);
-				i++;
-			}
-			write(1, "\n", 1);
-			--n;
-			i = 0;
-		}
+		nb = (aux * nb);
+		i++;
 	}
-	return (0);
+	return (nb);
 }
+
+/*int main(void)
+{
+	int nb;
+	nb = ft_iterative_power(3, 7);
+	printf("%d", nb);
+	return 0;
+}*/

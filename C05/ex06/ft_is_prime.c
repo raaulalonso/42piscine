@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*   ft_is_prime.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raalonso <raalonso@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: raalonso <raalonso@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/16 09:28:26 by raalonso          #+#    #+#             */
-/*   Updated: 2023/02/19 18:53:46 by raalonso         ###   ########.fr       */
+/*   Created: 2023/02/21 19:35:03 by raalonso          #+#    #+#             */
+/*   Updated: 2023/02/22 18:29:03 by raalonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
 
-int	main(int n, char **name)
+int	ft_is_prime(int nb)
 {
 	int	i;
 
-	i = 0;
-	if (n == 1)
+	i = 2;
+	if (nb <= 1)
+		return (0);
+	while (i <= (nb / 2))
 	{
-		while (name[0][i] != '\0')
-		{
-			write(1, &name[0][i], 1);
+		if (!(nb % i))
+			return (0);
+		else
 			i++;
-		}
-		write(1, "\n", 1);
 	}
-	return (0);
+	return (1);
 }
